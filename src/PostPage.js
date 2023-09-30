@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
+
 const PostPage = ({ posts, handleDelete }) => {
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
@@ -13,6 +14,9 @@ const PostPage = ({ posts, handleDelete }) => {
           <p>{post.body}</p>
           <button type="button" onClick={() => handleDelete(id)}>
             Delete
+          </button>
+          <button type="button">
+            <Link to={`/post/edit/${id}`}> Edit</Link>
           </button>
         </>
       )}

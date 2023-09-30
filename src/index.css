@@ -11,9 +11,13 @@ body {
   display: flex;
   background-color: #efefef;
 }
+#root {
+  flex-grow: 1;
+}
+
 .App {
-  width: 100vw;
-  max-width: 800px;
+  width: 100%;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +28,7 @@ body {
 }
 
 header {
-  width: 100vw;
+  width: 100%;
   padding-top: 0.8rem;
   padding-left: 1rem;
   background-color: aqua;
@@ -34,7 +38,7 @@ header {
   font-weight: bold;
 }
 nav {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: black;
@@ -66,7 +70,8 @@ nav ul {
 }
 .home,
 .postPage,
-.newPost {
+.newPost,
+.edit {
   width: 100%;
   flex-grow: 1;
   overflow-y: auto;

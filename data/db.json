@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "My 1 post",
+      "datetime": "My first post",
+      "body": " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, cum molestias"
+    },
+    {
+      "id": 2,
+      "title": "My 2 post",
+      "datetime": "My first post",
+      "body": " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, cum molestias"
+    },
+    {
+      "title": "My 3 third post",
+      "body": " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, cum molestias",
+      "id": 3
+    },
+    {
+      "title": "my 4 fourth post",
+      "body": "balakkjnlkldkvnlknsmmsvd\nkmklmlkmlkmldsk\nit was perfect\n",
+      "id": 4
+    }
+  ]
+}

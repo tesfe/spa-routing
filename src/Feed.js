@@ -5,7 +5,7 @@ const Feed = ({ posts }) => {
     <>
       {posts.map((post) => (
         <article key={post.id}>
-          <Link to={`post/${post.id}`}>
+          <Link to={`post/${post.id.toString()}`}>
             <h2>{post.title}</h2>
             <p> {post.datatime}</p>
           </Link>
