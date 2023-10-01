@@ -7,7 +7,7 @@ import About from "./About.js";
 import Missing from "./Missing.js";
 import PostPage from "./PostPage.js";
 import EditPage from "./EditPage.js";
-
+import useAxiosFetch from "./hooks/useAxiosFetch.js";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 function App() {
@@ -20,25 +20,32 @@ function App() {
 
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+
+  const { dataa } = useAxiosFetch("http://localhost:3500/posts");
+
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const response = await api.get("/posts");
-        setPosts(response.data);
-      } catch (error) {
-        //if response not in range of 200
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else {
-          //here we didnot get any response at all
-          console.log(`Error:${error.message}`);
-        }
-      }
-    };
-    fetch();
-  }, []);
+    setPosts(dataa);
+  }, [dataa]);
+
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     try {
+  //       const response = await api.get("/posts");
+  //       setPosts(response.data);
+  //     } catch (error) {
+  //       //if response not in range of 200
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         console.log(error.response.status);
+  //         console.log(error.response.headers);
+  //       } else {
+  //         //here we didnot get any response at all
+  //         console.log(`Error:${error.message}`);
+  //       }
+  //     }
+  //   };
+  //   fetch();
+  // }, []);
 
   useEffect(() => {
     const filterSearch = posts.filter(
