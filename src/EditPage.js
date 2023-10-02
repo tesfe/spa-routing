@@ -1,12 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
+import api from "./api/posts.js";
 import DataContext from "./context/DataContext";
 const EditPage = () => {
-  const { posts, editTitle, setEditTitle, editBody, setEditBody, handleEdit } =
-    useContext(DataContext);
+  const { posts, setPosts } = useContext(DataContext);
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
+
   const { id } = useParams();
+  const navigate = useNavigate();
   const post = posts.find((post) => post.id.toString() === id);
   //this is a bit difficult part which i didn't get why refresh this url or page returns an
   //empty post which results in error message that says title or body property is undefined.
@@ -21,6 +25,22 @@ const EditPage = () => {
 
   //   setEditTitle(post?.title);
   //   setEditBody(post?.body);
+  const handleEdit = async (id) => {
+    const EditPost = { title: editTitle, body: editBody };
+
+    try {
+      const response = await api.put(`posts/${id}`, EditPost);
+
+      setPosts(
+        posts.map((post) => (post.id === id ? { ...response.data } : post))
+      );
+      setEditBody("");
+      setEditTitle("");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error:${error.message}`);
+    }
+  };
 
   return (
     <main className="edit">
@@ -41,7 +61,7 @@ const EditPage = () => {
           value={editBody}
           onChange={(e) => setEditBody(e.target.value)}
         />
-        <button type="submit" onClick={() => handleEdit(post.id)}>
+        <button type="button" onClick={() => handleEdit(post.id)}>
           Post
         </button>
       </form>
