@@ -1,14 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-const EditPage = ({
-  posts,
-  editTitle,
-  setEditTitle,
-  editBody,
-  setEditBody,
-  handleEdit,
-}) => {
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
+const EditPage = () => {
+  const { posts, editTitle, setEditTitle, editBody, setEditBody, handleEdit } =
+    useContext(DataContext);
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
   //this is a bit difficult part which i didn't get why refresh this url or page returns an

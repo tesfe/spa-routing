@@ -3,7 +3,10 @@ import Header from "./Header.js";
 import Nav from "./Nav.js";
 import Footer from "./Footer.js";
 import { Outlet } from "react-router-dom";
-const Layout = ({ search, setSearch }) => {
+import { useContext } from "react";
+import DataContext from "./context/DataContext.js";
+const Layout = () => {
+  const { search, setSearch } = useContext(DataContext);
   return (
     <div className="App">
       <Header />
